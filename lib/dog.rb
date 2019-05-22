@@ -5,7 +5,10 @@ class Dog
   def initialize(hash)
     @name = hash[:name]
     @breed = hash[:breed]
-    @id = nil
+    if hash[:id]
+      @id = hash[:id]
+    else 
+      @id = nil
   end
   
   def self.create_table
