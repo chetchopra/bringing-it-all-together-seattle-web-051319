@@ -45,8 +45,9 @@ class Dog
   end
   
   def new_from_db(row)
-    hash = {:id: }
-    return Dog.new
+    hash = {:id: row[0], :name: row[1], :breed: row[2]}
+    return Dog.new(hash)
+  end
   
   def self.find_by_id(id)
     sql = <<-SQL
@@ -55,9 +56,10 @@ class Dog
       WHERE id = ?
     SQL
     
-    DB[:conn].execute(sql, id).map do |row|
-      row
+    return DB[:conn].execute(sql, id).map do |row|
+      self.new_from_db(row)
+    end.first
+  end
     
-      
-
+    
 end
