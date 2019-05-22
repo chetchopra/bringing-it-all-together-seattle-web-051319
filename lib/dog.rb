@@ -51,14 +51,12 @@ class Dog
   
   def self.find_by_id(id)
     sql = <<-SQL
-      SELECT *
-      FROM dogs
+      SELECT * 
+      FROM dogs 
       WHERE id = ?
     SQL
-    
-    return DB[:conn].execute(sql, id).map do |row|
-      self.new_from_db(row)
-    end.first
+    result = DB[:conn].execute(sql, id)[0]
+    Song.new(result[0], result[1], result[2])
   end
   
   # def self.find_or_create_by(hash)
