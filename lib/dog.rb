@@ -69,6 +69,7 @@ class Dog
     else 
       dog = self.create(hash)
     end
+    return dog
   end
     
     
