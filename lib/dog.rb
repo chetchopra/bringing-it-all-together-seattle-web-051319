@@ -9,6 +9,7 @@ class Dog
       @id = hash[:id]
     else 
       @id = nil
+    end
   end
   
   def self.create_table
