@@ -44,7 +44,7 @@ class Dog
     return dog
   end
   
-  def new_from_db(row)
+  def self.new_from_db(row)
     hash = {:id => row[0], :name => row[1], :breed => row[2]}
     return Dog.new(hash)
   end
