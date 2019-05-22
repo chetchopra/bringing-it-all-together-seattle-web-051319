@@ -43,6 +43,20 @@ class Dog
     dog.save
     return dog
   end
+  
+  def new_from_db(row)
+    hash = {:id: }
+    return Dog.new
+  
+  def self.find_by_id(id)
+    sql = <<-SQL
+      SELECT *
+      FROM dogs
+      WHERE id = ?
+    SQL
+    
+    DB[:conn].execute(sql, id).map do |row|
+      row
     
       
 
